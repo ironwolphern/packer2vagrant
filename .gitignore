@@ -1,0 +1,13 @@
+.DS_Store
+*.tfstate
+*.tfstate.*
+*.pem
+*.crt
+*.cer
+*.pfx
+*.p12
+*.p7b
+*.log
+*.log.*
+.terraform
+.terraform.*
