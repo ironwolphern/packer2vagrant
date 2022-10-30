@@ -24,7 +24,7 @@
         "boot_command": [
           "<up><wait><tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-ks.cfg<enter><wait>"
         ],
-        "headless": true,
+        "headless": false,
         "version": 19,
         "vm_name": "{{user `vm_name`}}",
         "vmx_data": {
