@@ -11,3 +11,4 @@
 *.log.*
 .terraform
 .terraform.*
+boxes/*.box
