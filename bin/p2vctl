@@ -1,0 +1,10 @@
+#!/bin/sh -eux
+
+if [ "${1}" = "centos" ]; then
+    packer build -force -color=false -timestamp-ui ../templates/centos-8/centos-stream-8.json
+elif [ "${1}" = "debian" ]; then
+    packer build -force -color=false -timestamp-ui ../templates/debian-11/debian-11.json
+else
+    echo "Unknown OS: ${1}"
+    exit 1
+fi
