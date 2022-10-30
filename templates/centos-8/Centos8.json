@@ -7,7 +7,7 @@
     "vm_name": "Centos_Stream_8",
     "cpus": "1",
     "memory": "1024",
-    "disk_size": "61440",
+    "disk_size": "20480",
     "disk_type_id": "0",
     "network": "nat",
     "network_adapter_type": "vmxnet3",
