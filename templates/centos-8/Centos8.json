@@ -4,7 +4,7 @@
     "mirror_directory": "8-stream/isos/x86_64",
     "iso_name": "CentOS-Stream-8-x86_64-latest-boot.iso",
     "iso_checksum": "file:http://ftp.rediris.es/mirror/CentOS/8-stream/isos/x86_64/CHECKSUM",
-    "vm_name": "Centos_St8",
+    "vm_name": "Centos_Stream_8",
     "cpus": "1",
     "memory": "1024",
     "disk_size": "61440",
@@ -51,7 +51,7 @@
     {
       "type": "vagrant",
       "keep_input_artifact": false,
-      "output": "Centos_St8_{{.Provider}}.box"
+      "output": "../../boxes/Centos_St8_{{.Provider}}.box"
     }
   ],
   "provisioners": [
