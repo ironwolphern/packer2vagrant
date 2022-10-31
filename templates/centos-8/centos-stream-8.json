@@ -63,8 +63,7 @@
       "expect_disconnect": true,
       "scripts": [
         "setup/sshd.sh",
-        "setup/vagrant.sh",
-        "setup/devops_tools.sh"
+        "setup/vagrant.sh"
       ],
       "type": "shell"
     }
