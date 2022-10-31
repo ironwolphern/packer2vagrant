@@ -1,0 +1,72 @@
+{
+  "variables": {
+    "mirror": "http://ftp.rediris.es/mirror/CentOS",
+    "mirror_directory": "8-stream/isos/x86_64",
+    "iso_name": "CentOS-Stream-8-x86_64-latest-boot.iso",
+    "iso_checksum": "file:http://ftp.rediris.es/mirror/CentOS/8-stream/isos/x86_64/CHECKSUM",
+    "vm_name": "Centos_Stream_8_devops",
+    "cpus": "1",
+    "memory": "1024",
+    "disk_size": "61440",
+    "disk_type_id": "0",
+    "network": "nat",
+    "network_adapter_type": "vmxnet3",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant"
+  },
+  "builders": [
+      {
+        "type": "vmware-iso",
+        "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
+        "iso_checksum": "{{user `iso_checksum`}}",
+        "http_directory": "./setup",
+        "boot_wait": "2s",
+        "boot_command": [
+          "<up><wait><tab> inst.text inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-ks-custom.cfg<enter><wait>"
+        ],
+        "headless": false,
+        "version": 19,
+        "vm_name": "{{user `vm_name`}}",
+        "vmx_data": {
+          "cpuid.coresPerSocket": "1"
+        },
+        "communicator": "ssh",
+        "ssh_timeout": "60m",
+        "ssh_username": "{{user `ssh_username`}}",
+        "ssh_password": "{{user `ssh_password`}}",
+        "ssh_port": 22,
+        "guest_os_type": "centos8_64Guest",
+        "cpus": "{{user `cpus`}}",
+        "memory": "{{user `memory`}}",
+        "disk_adapter_type": "nvme",
+        "disk_size": "{{user `disk_size`}}",
+        "disk_type_id": "{{user `disk_type_id`}}",
+        "network": "{{user `network`}}",
+        "network_adapter_type": "{{user `network_adapter_type`}}",
+        "vmx_remove_ethernet_interfaces": true,
+        "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p"
+      }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "keep_input_artifact": false,
+      "output": "../../boxes/Centos_Stream_8_devops_{{.Provider}}.box"
+    }
+  ],
+  "provisioners": [
+    {
+      "environment_vars": [
+        "HOME_DIR=/home/vagrant"
+      ],
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+      "expect_disconnect": true,
+      "scripts": [
+        "setup/sshd.sh",
+        "setup/vagrant.sh",
+        "setup/devops_tools.sh"
+      ],
+      "type": "shell"
+    }
+  ]
+}
