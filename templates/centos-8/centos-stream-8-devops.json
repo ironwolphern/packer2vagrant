@@ -10,7 +10,7 @@
     "disk_size": "61440",
     "disk_type_id": "0",
     "network": "nat",
-    "network_adapter_type": "vmxnet3",
+    "network_adapter_type": "e1000",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant"
   },
