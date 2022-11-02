@@ -44,6 +44,7 @@
         "network": "{{user `network`}}",
         "network_adapter_type": "{{user `network_adapter_type`}}",
         "vmx_remove_ethernet_interfaces": true,
+        "output_directory": "../../output/Centos_Stream_8_vmware",
         "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p"
       }
   ],
