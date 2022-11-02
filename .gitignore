@@ -12,3 +12,4 @@
 .terraform
 .terraform.*
 boxes/*.box
+output/*
