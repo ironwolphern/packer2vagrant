@@ -16,13 +16,11 @@ EOM
 
 # Install devops tools
 dnf install -y \
-    ansible \
     terraform \
     packer \
     awscli \
     azure-cli \
     google-cloud-cli \
     bash-completion \
-    htop \
     jq \
 
