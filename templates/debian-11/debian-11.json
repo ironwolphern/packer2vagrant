@@ -63,8 +63,8 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
       "expect_disconnect": true,
       "scripts": [
-        "setup/sshd.sh",
-        "setup/vagrant.sh"
+        "../scripts/sshd.sh",
+        "../scripts/vagrant.sh"
       ],
       "type": "shell"
     }
